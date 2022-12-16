@@ -1,0 +1,37 @@
+/* Normalize */
+@import url(../Vendor/normalize.css);
+
+/* Fonts */
+@import url(../Vendor/Fonts/inter.css);
+
+/* Page */
+@import url(../Blocks/page/page.css);
+
+/* Header */
+@import url(../Blocks/header/header.css);
+@import url(../Blocks/header/__logo/header__logo.css);
+
+/* Profile */
+@import url(../Blocks/profile/profile.css);
+@import url(../Blocks/profile/__avatar/profile__avatar.css);
+@import url(../Blocks/profile/__info/profile__info.css);
+@import url(../Blocks/profile/__heading/profile__heading.css);
+@import url(../Blocks/profile/__name/profile__name.css);
+@import url(../Blocks/profile/__job/profile__job.css);
+
+/* Cards */
+@import url(../Blocks/cards/cards.css);
+@import url(../Blocks/cards/__item/cards__item.css);
+@import url(../Blocks/cards/__heading/cards__heading.css);
+@import url(../Blocks/cards/__title/cards__title.css);
+
+/* Footer */
+@import url(../Blocks/footer/footer.css);
+@import url(../Blocks/footer/__copyright/footer__copyright.css);
+
+
+/* Button */
+@import url(../Blocks/button/__add/button__add.css);
+@import url(../Blocks/button/__edit/button__edit.css);
+@import url(../Blocks/button/__like/button__like.css);
+@import url(../Blocks/button/__edit-vector/button__edit-vector.css);
