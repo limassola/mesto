@@ -1,5 +1,5 @@
 .button__add {
-    width: 100%;
+    /* width: 100%; */
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     background-color: transparent;
@@ -9,4 +9,19 @@
     padding: 0;
     box-sizing: border-box;
     padding: 13px 133px;
+    transition: .5s;
+    cursor: pointer;
 }
+
+.button__add:hover {
+    opacity: .6;
+}
+
+
+@media screen and (min-width: 768px) {
+    .button__add {
+        padding: 14px 64px;
+        justify-self: end;
+        margin-right: 0;
+    }
+}   

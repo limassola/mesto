@@ -12,11 +12,11 @@
         <img src="./Images/logo.svg" alt="Логотип Место" class="header__logo">
     </header>
     <section class="profile">
-        <img src="./Images/Avatar.png" alt="Аватар Профиля Жак-Ив Кусто" class="profile__avatar">
+        <img src="./Images/image.png" alt="Аватар Профиля Жак-Ив Кусто" class="profile__avatar">
         <div class="profile__info">
             <div class="profile__heading">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="button__edit"><img src="./Images/edit-vector.svg" alt="редактировать" class="button__edit-vector"></button>
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="button__edit"></button>
             </div>
             <p class="profile__job">Исследователь океана</p>
         </div>
@@ -27,47 +27,63 @@
             <img src="./Images/cards/karachaevsk.png" alt="Древний монастрыь в Карачаевске" class="cards__image">
             <div class="cards__heading">
                 <h2 class="cards__title">Карачаевск</h2>
-                <button class="button__like">♡</button>
+                <button class="button__like"></button>
             </div>
         </div>
         <div class="cards__item">
             <img src="./Images/cards/Elbrus.png" alt="Вид на Эльбрус на закате" class="cards__image">
             <div class="cards__heading">
                 <h2 class="cards__title">Гора Эльбрус</h2>
-                <button class="button__like">♡</button>
+                <button class="button__like"></button>
             </div>
         </div>
         <div class="cards__item">
             <img src="./Images/cards/Dombai.png" alt="Вид на заснеженный склон в Домбае" class="cards__image">
             <div class="cards__heading">
                 <h2 class="cards__title">Домбай</h2>
-                <button class="button__like">♡</button>
+                <button class="button__like"></button>
             </div>
         </div>
         <div class="cards__item">
             <img src="./Images/cards/Elbrus.png" alt="Вид на Эльбрус на закате" class="cards__image">
             <div class="cards__heading">
                 <h2 class="cards__title">Гора Эльбрус</h2>
-                <button class="button__like">♡</button>
+                <button class="button__like"></button>
             </div>
         </div>
         <div class="cards__item">
             <img src="./Images/cards/Dombai.png" alt="Вид на заснеженный склон в Домбае" class="cards__image">
             <div class="cards__heading">
                 <h2 class="cards__title">Домбай</h2>
-                <button class="button__like">♡</button>
+                <button class="button__like"></button>
             </div>
         </div>
         <div class="cards__item">
             <img src="./Images/cards/karachaevsk.png" alt="Древний монастрыь в Карачаевске" class="cards__image">
             <div class="cards__heading">
                 <h2 class="cards__title">Карачаевск</h2>
-                <button class="button__like">♡</button>
+                <button class="button__like"></button>
             </div>
         </div>
     </section>
     <footer class="footer">
-        <p class="footer__copyright">© 2020 Mesto Russia</p>
+        <p class="footer__copyright">© 2022 Mesto Russia</p>
     </footer>
+    <div class="popup">
+        <button class="button__close"></button>
+        <div class="popup__container">
+            <form action="" method="get" class="form">
+                <h2 class="form__title">Редактировать профиль</h2>
+                  <label for="name"></label>
+                  <input class="form__item form__item_type_name" type="text" name="name" id="name" required value="Жак-Ив Кусто">
+
+                  <label for="job"></label>
+                  <input type="job" class="form__item form__item_type_job" name="job" id="job" required value="Исследователь океана">
+                
+                <button type="submit" class="button__save">Сохранить</button>
+              </form>
+              
+        </div>
+    </div>
 </body>
 </html>

@@ -29,9 +29,23 @@
 @import url(../Blocks/footer/footer.css);
 @import url(../Blocks/footer/__copyright/footer__copyright.css);
 
+/* Popup */
+@import url(../Blocks/popup/popup.css);
+@import url(../Blocks/popup/__container/popup__container.css);
+
+
+
+/* Form */
+@import url(../Blocks/form/__title/form__title.css);
+@import url(../Blocks/form/form.css);
+@import url(../Blocks/form/__item/form__item.css);
+@import url(../Blocks/form/__item/_type/form__item_type_job.css);
+@import url(../Blocks/form/__item/_type/form__item_type_name.css);
 
 /* Button */
 @import url(../Blocks/button/__add/button__add.css);
 @import url(../Blocks/button/__edit/button__edit.css);
 @import url(../Blocks/button/__like/button__like.css);
 @import url(../Blocks/button/__edit-vector/button__edit-vector.css);
+@import url(../Blocks/button/__save/button__save.css);
+@import url(../Blocks/button/__close/button__close.css);
