@@ -32,6 +32,7 @@
 /* Popup */
 @import url(../Blocks/popup/popup.css);
 @import url(../Blocks/popup/__container/popup__container.css);
+@import url(../Blocks/popup/_opened/popup_opened.css);
 
 
 
@@ -46,6 +47,5 @@
 @import url(../Blocks/button/__add/button__add.css);
 @import url(../Blocks/button/__edit/button__edit.css);
 @import url(../Blocks/button/__like/button__like.css);
-@import url(../Blocks/button/__edit-vector/button__edit-vector.css);
 @import url(../Blocks/button/__save/button__save.css);
 @import url(../Blocks/button/__close/button__close.css);
