@@ -44,8 +44,9 @@
 @import url(../Blocks/form/__item/_type/form__item_type_name.css);
 
 /* Button */
-@import url(../Blocks/button/__add/button__add.css);
-@import url(../Blocks/button/__edit/button__edit.css);
-@import url(../Blocks/button/__like/button__like.css);
-@import url(../Blocks/button/__save/button__save.css);
-@import url(../Blocks/button/__close/button__close.css);
+@import url(../Blocks/button/button.css);
+@import url(../Blocks/button/_type/button_type_add.css);
+@import url(../Blocks/button/_type/button_type_close.css);
+@import url(../Blocks/button/_type/button_type_edit.css);
+@import url(../Blocks/button/_type/button_type_like.css);
+@import url(../Blocks/button/_type/button_type_save.css);

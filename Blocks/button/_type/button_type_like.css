@@ -1,4 +1,4 @@
-.button__like {
+.button_type_like {
     background-image: url("../../../Images/cards/card-Vector.svg");
     background-position: center;
     background-repeat: no-repeat;
@@ -12,11 +12,11 @@
     transition: .5s;
 }
 
-.button__like:hover {
+.button_type_like:hover {
     opacity: .5;
 }
 
-.button__like:active {
+.button_type_like:active {
     background-image: url('../../../Images/cards/like_active.svg');
 }
 

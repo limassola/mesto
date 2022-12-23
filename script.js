@@ -1,6 +1,6 @@
-let openButton = document.querySelector('.button__edit');
+let openButton = document.querySelector('.button_type_edit');
 
-let closeButton = document.querySelector('.button__close');
+let closeButton = document.querySelector('.button_type_close');
 
 let popUp = document.querySelector('.popup');
 
