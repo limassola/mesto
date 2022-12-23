@@ -1,0 +1,22 @@
+.button__save {
+    background-color: #000;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    padding: 14px;
+    transition: .5s;
+}
+
+.button__save:hover {
+    cursor: pointer;
+    opacity: .8;
+}
+
+@media screen and (min-width: 768px) {
+    .button__save {
+        font-size: 18px;
+        line-height: 22px;
+    }
+}

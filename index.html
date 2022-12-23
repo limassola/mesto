@@ -7,7 +7,84 @@
     <link rel="stylesheet" href="./Pages/index.css">
     <title>Mesto</title>
 </head>
-<body>
-    
+<body class="page">
+    <header class="header">
+        <img src="./Images/logo.svg" alt="Логотип Место" class="header__logo">
+    </header>
+    <section class="profile">
+        <img src="./Images/image.png" alt="Аватар Профиля Жак-Ив Кусто" class="profile__avatar">
+        <div class="profile__info">
+            <div class="profile__heading">
+                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <button class="button__edit"></button>
+            </div>
+            <p class="profile__job">Исследователь океана</p>
+        </div>
+        <button class="button__add"><img src="./Images/plus-vector.svg" alt="Добавить" class="button__add-vector"></button>
+    </section>
+    <section class="cards">
+        <div class="cards__item">
+            <img src="./Images/cards/karachaevsk.png" alt="Древний монастрыь в Карачаевске" class="cards__image">
+            <div class="cards__heading">
+                <h2 class="cards__title">Карачаевск</h2>
+                <button class="button__like"></button>
+            </div>
+        </div>
+        <div class="cards__item">
+            <img src="./Images/cards/Elbrus.png" alt="Вид на Эльбрус на закате" class="cards__image">
+            <div class="cards__heading">
+                <h2 class="cards__title">Гора Эльбрус</h2>
+                <button class="button__like"></button>
+            </div>
+        </div>
+        <div class="cards__item">
+            <img src="./Images/cards/Dombai.png" alt="Вид на заснеженный склон в Домбае" class="cards__image">
+            <div class="cards__heading">
+                <h2 class="cards__title">Домбай</h2>
+                <button class="button__like"></button>
+            </div>
+        </div>
+        <div class="cards__item">
+            <img src="./Images/cards/Elbrus.png" alt="Вид на Эльбрус на закате" class="cards__image">
+            <div class="cards__heading">
+                <h2 class="cards__title">Гора Эльбрус</h2>
+                <button class="button__like"></button>
+            </div>
+        </div>
+        <div class="cards__item">
+            <img src="./Images/cards/Dombai.png" alt="Вид на заснеженный склон в Домбае" class="cards__image">
+            <div class="cards__heading">
+                <h2 class="cards__title">Домбай</h2>
+                <button class="button__like"></button>
+            </div>
+        </div>
+        <div class="cards__item">
+            <img src="./Images/cards/karachaevsk.png" alt="Древний монастрыь в Карачаевске" class="cards__image">
+            <div class="cards__heading">
+                <h2 class="cards__title">Карачаевск</h2>
+                <button class="button__like"></button>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <p class="footer__copyright">© 2022 Mesto Russia</p>
+    </footer>
+    <div class="popup">
+        <button class="button__close"></button>
+        <div class="popup__container">
+            <form class="form">
+                <h2 class="form__title">Редактировать профиль</h2>
+                  <!-- <label for="name"></label> -->
+                <input class="form__item form__item_type_name" type="text" name="name" id="name" required value="">
+
+                  <!-- <label for="job"></label> -->
+                <input type="job" class="form__item form__item_type_job" name="job" id="job" required value="">
+                
+                <button type="submit" class="button__save">Сохранить</button>
+              </form>
+              
+        </div>
+    </div>
+<script src="./script.js"></script>
 </body>
 </html>
