@@ -1,5 +1,5 @@
-.button_type_like {
-    background-image: url("../../../Images/cards/card-Vector.svg");
+.cards__button {
+    background-image: url("../../../images/cards/card-Vector.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,15 +8,15 @@
     border: none;
     padding: 0;
     font-size: 23px;
-    cursor: pointer;
     transition: .5s;
+    background-color: transparent;
 }
 
-.button_type_like:hover {
+.cards__button:hover {
     opacity: .5;
 }
 
-.button_type_like:active {
-    background-image: url('../../../Images/cards/like_active.svg');
+.cards__button:active {
+    background-image: url('../../../images/cards/like_active.svg');
 }
 

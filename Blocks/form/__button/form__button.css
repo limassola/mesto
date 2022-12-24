@@ -1,4 +1,4 @@
-.button_type_save {
+.form__button {
     background-color: #000;
     font-size: 14px;
     line-height: 17px;
@@ -7,15 +7,16 @@
     width: 100%;
     padding: 14px;
     transition: .5s;
+    border-radius: 2px;
 }
 
-.button_type_save:hover {
+.form__button:hover {
     cursor: pointer;
     opacity: .8;
 }
 
 @media screen and (min-width: 768px) {
-    .button_type_save {
+    .form__button {
         font-size: 18px;
         line-height: 22px;
     }

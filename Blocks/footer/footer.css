@@ -4,15 +4,16 @@
 }
 
 
-@media screen and (min-width: 768px) and (max-width: 1279px) {
+@media screen and (min-width: 768px) {
     .footer {
         max-width: 740px;
-        margin: 0 0 60px 30px;
+        margin: 0 0 60px 60px;
     }
 }
 
 @media screen and (min-width: 1280px) {
     .footer {
         max-width: 880px;
+        margin-left: 0;
     }
 }

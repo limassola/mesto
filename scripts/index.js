@@ -1,25 +1,27 @@
-let openButton = document.querySelector('.button_type_edit');
+let openButton = document.querySelector('.profile__button_type_edit');
 
-let closeButton = document.querySelector('.button_type_close');
+let closeButton = document.querySelector('.popup__button');
 
 let popUp = document.querySelector('.popup');
 
 let profileContent = document.querySelector('.profile__name');
 let jobContent = document.querySelector('.profile__job');
 
-let nameValue = profileContent.textContent;
-let jobValue = jobContent.textContent;
+
 
 let nameInput = document.querySelector('.form__item_type_name');
 let jobInput = document.querySelector('.form__item_type_job');
 
 
 
-nameInput.setAttribute('value', nameValue)
-jobInput.setAttribute('value', jobValue)
+
 
 function openPopup() {
     popUp.classList.add('popup_opened')
+    
+    nameInput.value = profileContent.textContent;
+    jobInput.value = jobContent.textContent;
+    
 }
 
 openButton.addEventListener('click', openPopup);
@@ -43,9 +45,6 @@ let formElement = document.querySelector('.form')
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
-
-    nameInput.value;
-    jobInput.value;
 
     profileContent.textContent = nameInput.value;
     jobContent.textContent = jobInput.value;

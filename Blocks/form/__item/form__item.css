@@ -3,4 +3,16 @@
     width: 100%;
     font-size: 14px;
     line-height: 17px;
+    padding-bottom: 10px;
+}
+
+
+.form__item:nth-child(2) {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin-bottom: 35px;
+}
+
+.form__item:nth-child(3) {
+    border-bottom: 1px solid rgba(0, 0, 0, .2);
+    margin-bottom: 50px;
 }
