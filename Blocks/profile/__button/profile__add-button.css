@@ -1,4 +1,4 @@
-.profile__button_type_add {
+.profile__add-button {
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     background-color: transparent;
@@ -8,7 +8,7 @@
     box-sizing: border-box;
     /* padding: 13px 133px; */
     transition: .5s;
-    background-image: url('../../../../images/plus-vector.svg');
+    background-image: url('../../../images/plus-vector.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: 6%;
@@ -16,13 +16,13 @@
     height: 50px;
 }
 
-.profile__button_type_add:hover {
+.profile__add-button:hover {
     opacity: .6;
 }
 
 
 @media screen and (min-width: 768px) {
-    .profile__button_type_add {
+    .profile__add-button {
         /* padding: 14px 64px; */
         width: 150px;
         justify-self: end;
