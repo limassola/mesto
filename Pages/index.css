@@ -18,14 +18,15 @@
 @import url(../blocks/profile/__heading/profile__heading.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__job/profile__job.css);
-@import url(../blocks/profile/__button/profile__add-button.css);
-@import url(../blocks/profile/__button/profile__edit-button.css);
+@import url(../blocks/profile/__button/profile__button-add.css);
+@import url(../blocks/profile/__button/profile__button-edit.css);
 
 /* Cards */
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/cards/__item/cards__item.css);
 @import url(../blocks/cards/__heading/cards__heading.css);
 @import url(../blocks/cards/__title/cards__title.css);
+@import url(../blocks/cards/__image/cards__image.css);
 @import url(../blocks/cards/__button/cards__button.css);
 
 /* Footer */

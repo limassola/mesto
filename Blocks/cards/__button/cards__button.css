@@ -2,7 +2,7 @@
     background-image: url("../../../images/cards/card-Vector.svg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     min-width: 22px;
     height: 19px;
     border: none;
