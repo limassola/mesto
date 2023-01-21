@@ -1,8 +1,10 @@
 let openButton = document.querySelector('.profile__button-edit');
+// let addButton = document.querySelector('.profile__button-add')
 
 let closeButton = document.querySelector('.popup__button');
 
 let popUp = document.querySelector('.popup');
+
 
 let profileContent = document.querySelector('.profile__name');
 let jobContent = document.querySelector('.profile__job');
@@ -25,12 +27,22 @@ function openPopup() {
 }
 
 openButton.addEventListener('click', openPopup);
+// addButton.addEventListener('click', openPopup);
 
-function closePopup () {
-    popUp.classList.remove('popup_opened')
-}
+function closePopup (currentPopup) {
+    currentPopup.classList.remove('popup_opened')
+};
 
-closeButton.addEventListener('click', closePopup);
+
+// fuction закрытия всех попапов
+let buttonsClose = document.querySelectorAll('.popup__button')
+
+buttonsClose.forEach(button =>{
+    button.addEventListener('click', function(evt){
+        const popupItem = evt.target.closest('.popup');
+        closePopup(popupItem);
+    })
+});
 
 
 
