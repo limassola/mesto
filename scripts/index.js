@@ -1,9 +1,11 @@
-let openButton = document.querySelector('.profile__button-edit');
-// let addButton = document.querySelector('.profile__button-add')
+let editButton = document.querySelector('.profile__button-edit');
+let addButton = document.querySelector('.profile__button-add')
 
-let closeButton = document.querySelector('.popup__button');
+let closeButtons = document.querySelectorAll('.popup__button');
 
-let popUp = document.querySelector('.popup');
+// let popup = document.querySelector('.popup');
+let popupEdit = document.querySelector('.popup_type_edit');
+let popupAdd = document.querySelector('.popup_type_add')
 
 
 let profileContent = document.querySelector('.profile__name');
@@ -18,26 +20,27 @@ let jobInput = document.querySelector('.form__item_type_job');
 
 
 
-function openPopup() {
-    popUp.classList.add('popup_opened')
+function openPopup(popup) {
+    popup.classList.add('popup_opened')
     
     nameInput.value = profileContent.textContent;
     jobInput.value = jobContent.textContent;
     
 }
 
-openButton.addEventListener('click', openPopup);
-// addButton.addEventListener('click', openPopup);
+
+editButton.addEventListener('click', ()=>openPopup(popupEdit));
+addButton.addEventListener('click', ()=>openPopup(popupAdd));
 
 function closePopup (currentPopup) {
     currentPopup.classList.remove('popup_opened')
 };
 
+// function открытия попапов
+
 
 // fuction закрытия всех попапов
-let buttonsClose = document.querySelectorAll('.popup__button')
-
-buttonsClose.forEach(button =>{
+closeButtons.forEach(button =>{
     button.addEventListener('click', function(evt){
         const popupItem = evt.target.closest('.popup');
         closePopup(popupItem);
