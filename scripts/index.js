@@ -19,7 +19,7 @@ let jobInput = document.querySelector('.form__item_type_job');
 
 
 
-
+// function открытия попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened')
     
@@ -36,7 +36,7 @@ function closePopup (currentPopup) {
     currentPopup.classList.remove('popup_opened')
 };
 
-// function открытия попапов
+
 
 
 // fuction закрытия всех попапов
@@ -46,10 +46,6 @@ closeButtons.forEach(button =>{
         closePopup(popupItem);
     })
 });
-
-
-
-
 
 
 
@@ -69,3 +65,16 @@ function handleFormSubmit (evt) {
 
 formElement.addEventListener('submit', handleFormSubmit); 
 
+
+const likeButtons = document.querySelectorAll('.cards__button')
+
+// function like() {
+//     likeButton.classList.toggle('cards__button_active')
+// }
+
+likeButtons.forEach(item => {
+    item.addEventListener('click', function(evt){
+        const currentButton = evt.target;
+        currentButton.classList.toggle('cards__button_active')
+    })
+})

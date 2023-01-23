@@ -16,7 +16,4 @@
     opacity: .5;
 }
 
-.cards__button:active {
-    background-image: url('../../../images/cards/like_active.svg');
-}
 
