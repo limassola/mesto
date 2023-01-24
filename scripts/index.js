@@ -93,18 +93,6 @@ function handleFormSubmit (evt) {
 formElement.addEventListener('submit', handleFormSubmit); 
 
 
-const likeButtons = document.querySelectorAll('.cards__button')
-
-// function like() {
-//     likeButton.classList.toggle('cards__button_active')
-// }
-
-likeButtons.forEach(item => {
-    item.addEventListener('click', function(evt){
-        const currentButton = evt.target;
-        currentButton.classList.toggle('cards__button_active')
-    })
-})
 
 // render cards
 
@@ -128,6 +116,12 @@ const createCard = (cardName, cardLink) => {
   container.innerHTML = template;
   container.querySelector('.cards__title').textContent = cardName;
   container.querySelector('.cards__image').setAttribute("src", cardLink);
+
+  const likeBtn = container.querySelector('.cards__button');
+  likeBtn.addEventListener('click', function(evt){
+    const currentButton = evt.target;
+    currentButton.classList.toggle('cards__button_active')
+})
 
   return container.firstElementChild;
 }
