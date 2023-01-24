@@ -105,25 +105,32 @@ const createCard = (cardName, cardLink) => {
   const template = `
   <div class="cards__item">
     <img class="cards__image">
+    <button type="button" class="button cards__button-delete"></button>
     <div class="cards__heading">
         <h2 class="cards__title"></h2>
-        <button type="button" class="button cards__button"></button>
+        <button type="button" class="button cards__button-like"></button>
     </div>
   </div>
   `;
 
   const container = document.createElement('div');
   container.innerHTML = template;
-  container.querySelector('.cards__title').textContent = cardName;
-  container.querySelector('.cards__image').setAttribute("src", cardLink);
+  const card = container.firstElementChild;
+  card.querySelector('.cards__title').textContent = cardName;
+  card.querySelector('.cards__image').setAttribute("src", cardLink);
 
-  const likeBtn = container.querySelector('.cards__button');
+  const likeBtn = card.querySelector('.cards__button-like');
   likeBtn.addEventListener('click', function(evt){
     const currentButton = evt.target;
-    currentButton.classList.toggle('cards__button_active')
-})
+    currentButton.classList.toggle('cards__button-like_active')
+});
 
-  return container.firstElementChild;
+  const deleteBtn = card.querySelector('.cards__button-delete');
+  deleteBtn.addEventListener('click', ()=>{
+    card.remove();
+  })
+
+  return card;
 }
 
 const renderCard = (cardName, cardLink) => {
