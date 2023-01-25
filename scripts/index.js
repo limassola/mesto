@@ -52,7 +52,9 @@ function openPopup(popup) {
     
     nameInput.value = profileContent.textContent;
     jobInput.value = jobContent.textContent;
-    
+
+    titleInput.value = '';
+    linkInput.value = '';
 }
 
 
@@ -116,8 +118,12 @@ const createCard = (cardName, cardLink) => {
   const container = document.createElement('div');
   container.innerHTML = template;
   const card = container.firstElementChild;
-  card.querySelector('.cards__title').textContent = cardName;
-  card.querySelector('.cards__image').setAttribute("src", cardLink);
+  const cardImage = card.querySelector('.cards__image');
+  const cardTitle = card.querySelector('.cards__title');
+  
+  cardTitle.textContent = cardName;
+  cardImage.setAttribute("src", cardLink);
+  cardImage.setAttribute("alt", cardName);
 
   const likeBtn = card.querySelector('.cards__button-like');
   likeBtn.addEventListener('click', function(evt){
@@ -128,6 +134,17 @@ const createCard = (cardName, cardLink) => {
   const deleteBtn = card.querySelector('.cards__button-delete');
   deleteBtn.addEventListener('click', ()=>{
     card.remove();
+  })
+
+  const imagePopup = document.querySelector('.popup_type_image');
+  const imageActive = imagePopup.querySelector('.popup__image');
+  const titleActive = imagePopup.querySelector('.popup__title');
+  
+  cardImage.addEventListener('click', () => {
+    openPopup(imagePopup)
+    imageActive.src = cardImage.src;
+    imageActive.alt = cardImage.alt;
+    titleActive.textContent = cardTitle.textContent;
   })
 
   return card;
