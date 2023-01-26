@@ -11,7 +11,7 @@
     background-color: transparent;
 }
 
-.cards__button:hover {
+.cards__button-like:hover {
     opacity: .5;
 }
 
