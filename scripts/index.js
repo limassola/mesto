@@ -30,7 +30,7 @@ const addButton = document.querySelector('.profile__button-add')
 
 const closeButtons = document.querySelectorAll('.popup__button');
 
-// let popup = document.querySelector('.popup');
+
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupAdd = document.querySelector('.popup_type_add')
 
@@ -43,7 +43,16 @@ const jobContent = document.querySelector('.profile__job');
 const nameInput = document.querySelector('.form__item_type_name');
 const jobInput = document.querySelector('.form__item_type_job');
 
+const cardsContainer = document.querySelector('.cards');
+const titleInput = document.querySelector('.form__item_type_title');
+const linkInput = document.querySelector('.form__item_type_link');
 
+const imagePopup = document.querySelector('.popup_type_image');
+const imageActive = imagePopup.querySelector('.popup__image');
+const titleActive = imagePopup.querySelector('.popup__title');
+const template = document.querySelector('.cards__item-template');
+
+const popupEditFormElement = popupEdit.querySelector('.form')
 
 
 // function открытия попапов
@@ -68,25 +77,21 @@ addButton.addEventListener('click', openAddPopup);
 
 
 
-function closePopup(popup) {
-    popup.classList.remove('popup_opened')
-};
-
 
 
 
 // fuction закрытия всех попапов
+
+function closePopup(popup) {
+    popup.classList.remove('popup_opened')
+};
+
 closeButtons.forEach(button =>{
-    button.addEventListener('click', function(evt){
-        const popupItem = evt.target.closest('.popup');
+  const popupItem = button.closest('.popup');  
+  button.addEventListener('click', function(evt){
         closePopup(popupItem);
     })
 });
-
-
-
-const editFormElement = popupEdit.querySelector('.form')
-
 
 function handleFormSubmit (evt) {
     evt.preventDefault();
@@ -97,27 +102,14 @@ function handleFormSubmit (evt) {
     closePopup (popupEdit);
 }
 
-editFormElement.addEventListener('submit', handleFormSubmit); 
-
-
+popupEditFormElement.addEventListener('submit', handleFormSubmit); 
 
 // render cards
 
 
-const cards = document.querySelector('.cards');
-const titleInput = document.querySelector('.form__item_type_title');
-const linkInput = document.querySelector('.form__item_type_link');
-
 const createCard = (cardName, cardLink) => {
-  
-  const imagePopup = document.querySelector('.popup_type_image');
-  const imageActive = imagePopup.querySelector('.popup__image');
-  const titleActive = imagePopup.querySelector('.popup__title');
 
-
-  const template = document.querySelector('.cards__item-template')
   const card = template.content.querySelector('.cards__item').cloneNode(true);
-  
   const cardImage = card.querySelector('.cards__image');
   const cardTitle = card.querySelector('.cards__title');
   
@@ -129,15 +121,13 @@ const createCard = (cardName, cardLink) => {
   likeBtn.addEventListener('click', function(evt){
     const currentButton = evt.target;
     currentButton.classList.toggle('cards__button-like_active')
-});
+  });
 
   const deleteBtn = card.querySelector('.cards__button-delete');
   deleteBtn.addEventListener('click', ()=>{
     card.remove();
   })
 
-  
-  
   cardImage.addEventListener('click', () => {
     openPopup(imagePopup)
     imageActive.src = cardLink;
@@ -146,19 +136,19 @@ const createCard = (cardName, cardLink) => {
   })
 
   return card;
-}
+};
 
 const renderCard = (cardName, cardLink) => {
-  cards.prepend(createCard(cardName, cardLink))
-}
+  cardsContainer.prepend(createCard(cardName, cardLink))
+};
 
 initialCards.forEach((item)=>{
   cardName = item.name;
   cardLink = item.link
   renderCard(cardName, cardLink);
-})
+});
 
-const addFormElement = popupAdd.querySelector('.form')
+const popupAddFormElement = popupAdd.querySelector('.form')
 
 function addFormHandler(evt, item){
   evt.preventDefault();
@@ -166,7 +156,7 @@ function addFormHandler(evt, item){
   const cardLink = linkInput.value
   renderCard(cardName,cardLink);
   closePopup (popupAdd);
-}
+};
 
 
-addFormElement.addEventListener('submit', addFormHandler);
+popupAddFormElement.addEventListener('submit', addFormHandler);
