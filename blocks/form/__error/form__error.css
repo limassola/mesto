@@ -1,0 +1,12 @@
+.form__error {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    min-height: 12px;
+    margin-bottom: 30px;
+}
+
+.form__error:first-child {
+    margin-bottom: 13px;
+}

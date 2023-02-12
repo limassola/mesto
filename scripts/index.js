@@ -68,8 +68,9 @@ function openEditPopup() {
 
 function openAddPopup() {
   titleInput.value = '';
-    linkInput.value = '';
-    openPopup(popupAdd);
+  linkInput.value = '';
+  openPopup(popupAdd);
+  document.addEventListener('keydown', closeByEscape)
 }
 
 editButton.addEventListener('click', openEditPopup);
@@ -82,8 +83,17 @@ addButton.addEventListener('click', openAddPopup);
 
 // fuction закрытия всех попапов
 
+function closeByEscape(evt) {
+  if(evt.key === 'Escape') {
+    const openedPopup = document.querySelector('.popup_opened');
+    closePopup(openedPopup);
+    console.log(evt)
+  }
+}
+
 function closePopup(popup) {
-    popup.classList.remove('popup_opened')
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closeByEscape);
 };
 
 closeButtons.forEach(button =>{

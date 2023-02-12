@@ -80,26 +80,25 @@
                 <input 
                 class="form__item form__item_type_name" 
                 type="text" 
-                name="name" 
+                name="input-name" 
                 id="name" 
                 required 
                 value=""
                 minlength="2"
                 maxlength="40"
                 >
-
-                  <!-- <label for="job"></label> -->
+                <span id="input-name-error" class="form__error"></span>
                 <input 
                 type="text" 
                 class="form__item form__item_type_job" 
                 name="job" 
-                id="job" 
+                id="input-about" 
                 required 
                 value=""
                 minlength="2"
                 maxlength="200"
                 >
-                
+                <span id="input-about-error" class="form__error"></span>
                 <button type="submit" class="button form__button">Сохранить</button>
             </form>
               
@@ -110,30 +109,29 @@
             <button type="button" class="button popup__button"></button>
             <form class="form" name="popup" novalidate>
                 <h2 class="form__title">Новое место</h2>
-                  <!-- <label for="name"></label> -->
+                  <label for="name"></label>
                 <input 
                 class="form__item form__item_type_title" 
                 type="text" 
                 name="title" 
-                id="title" 
+                id="input-title" 
                 required 
                 value="" 
                 placeholder="Название"
                 minlength="2"
                 maxlength="30"
                 >
-
-                  <!-- <label for="job"></label> -->
+                <span id="input-title-error" class="form__error"></span>
                 <input 
-                type="" 
+                type="url" 
                 class="form__item form__item_type_link" 
                 name="link" 
-                id="link" 
+                id="input-link" 
                 required 
                 value="" 
                 placeholder="Ссылка на картинку"
                 >
-                
+                <span id="input-link-error" class="form__error"></span>
                 <button type="submit" class="button form__button">Создать</button>
             </form>
         </div>   
@@ -157,7 +155,7 @@
           </div>
     </template>
 
-<script src="./scripts/index.js"></script>
-<script src="./scripts/validate.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>
