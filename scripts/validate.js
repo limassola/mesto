@@ -1,9 +1,10 @@
 const formValidationConfig = {
     formSelector: '.form',
     inputSelector: '.form__item',
-    errorClass: 'form__item_type_error',
+    inputErrorClass: 'form__item_type_error',
     buttonSelector: '.form__button',
     buttonDisabledClass: 'form__button_disabled',
+    errorClass: 'form__error_visible'
 };
 
 function disableSubmit(evt) {
@@ -31,10 +32,12 @@ function handleFormInput(event, config) {
     
 
     if (input.validity.valid) {
-        input.classList.remove(config.errorClass);
+        input.classList.remove(config.inputErrorClass);
+        errorElement.classList.remove(config.errorClass)
         errorElement.textContent = '';
     } else {
-        input.classList.add(config.errorClass);
+        input.classList.add(config.inputErrorClass);
+        errorElement.classList.add(config.errorClass)
         errorElement.textContent = input.validationMessage;
     }
 }
