@@ -65,12 +65,14 @@ function openEditPopup() {
   nameInput.value = profileContent.textContent;
   jobInput.value = jobContent.textContent;
   openPopup(popupEdit);
+  enableValidation(formValidationConfig);
 }
 
 function openAddPopup() {
   titleInput.value = '';
   linkInput.value = '';
   openPopup(popupAdd);
+  enableValidation(formValidationConfig);
 }
 
 editButton.addEventListener('click', openEditPopup);
