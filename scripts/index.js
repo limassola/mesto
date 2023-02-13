@@ -52,7 +52,8 @@ const imageActive = imagePopup.querySelector('.popup__image');
 const titleActive = imagePopup.querySelector('.popup__title');
 const template = document.querySelector('.cards__item-template');
 
-const popupEditFormElement = popupEdit.querySelector('.form')
+const popupEditFormElement = popupEdit.querySelector('.form');
+const popupAddFormElement = popupAdd.querySelector('.form');
 
 
 // function открытия попапов
@@ -65,14 +66,14 @@ function openEditPopup() {
   nameInput.value = profileContent.textContent;
   jobInput.value = jobContent.textContent;
   openPopup(popupEdit);
-  enableValidation(formValidationConfig);
+  toggleButton(popupEditFormElement,formValidationConfig);
 }
 
 function openAddPopup() {
   titleInput.value = '';
   linkInput.value = '';
   openPopup(popupAdd);
-  enableValidation(formValidationConfig);
+  toggleButton(popupAddFormElement,formValidationConfig);
 }
 
 editButton.addEventListener('click', openEditPopup);
@@ -159,8 +160,6 @@ initialCards.forEach((item)=>{
   cardLink = item.link
   renderCard(cardName, cardLink);
 });
-
-const popupAddFormElement = popupAdd.querySelector('.form')
 
 function addFormHandler(evt, item){
   evt.preventDefault();

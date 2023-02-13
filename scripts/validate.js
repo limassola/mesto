@@ -46,7 +46,7 @@ function toggleButton(form, config) {
     const buttonSubmit = form.querySelector(config.buttonSelector);
     const isFormValid = form.checkValidity();
     buttonSubmit.disabled = !isFormValid;
-    buttonSubmit.classList.toggle('form__button_disabled', !isFormValid)
+    buttonSubmit.classList.toggle(config.buttonDisabledClass, !isFormValid)
 
 }
 
