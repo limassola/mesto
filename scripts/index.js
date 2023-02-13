@@ -58,6 +58,7 @@ const popupEditFormElement = popupEdit.querySelector('.form')
 // function открытия попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened')
+    document.addEventListener('keydown', closeByEscape);
 }
 
 function openEditPopup() {
@@ -70,7 +71,6 @@ function openAddPopup() {
   titleInput.value = '';
   linkInput.value = '';
   openPopup(popupAdd);
-  document.addEventListener('keydown', closeByEscape)
 }
 
 editButton.addEventListener('click', openEditPopup);
