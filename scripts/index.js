@@ -170,3 +170,13 @@ function addFormHandler(evt, item){
 
 
 popupAddFormElement.addEventListener('submit', addFormHandler);
+
+// функция закрытия по нажатию на оверлэй
+
+function closeByOverlay(evt) {
+  if(evt.target.classList.contains('popup_opened')) {
+    closePopup(evt.target);
+  }
+}
+
+document.addEventListener('mousedown', closeByOverlay);
