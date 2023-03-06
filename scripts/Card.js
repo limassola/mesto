@@ -1,8 +1,9 @@
 class Card {
-    constructor(card, templateSelector){
+    constructor(card, templateSelector, openImage){
         this._name = card.name;
         this._link = card.link;
         this._templateSelector = templateSelector;
+        this._openImage = openImage;
     }
 
     _getTemplate() {
@@ -35,14 +36,6 @@ class Card {
         this._card.remove();
     }
 
-    _addNewCard(item) {
-       this.generateCard()
-    }
-
-    // _openImage() {
-    //     this._openPopup = openImage;
-    // }
-
     _setEventListeners() {
         this._elementLikeBtn.addEventListener('click', () => {
             this._likeCard();
@@ -51,9 +44,9 @@ class Card {
             this._deleteCard();
         });
 
-        // this._elementimage.addEventListener('click', () => {
-        //     this._openImage();
-        // })
+        this._elementImage.addEventListener('click', () => {
+            this._openImage
+        })
     }
 };
 

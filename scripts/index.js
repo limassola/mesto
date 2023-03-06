@@ -1,4 +1,7 @@
 import Card from "./Card.js";
+import {formValidationConfig,FormValidator} from "./FormValidator.js";
+
+
 
 
 const initialCards = [
@@ -67,7 +70,10 @@ function renderCard(data) {
 
 initialCards.forEach((item) => {
   renderCard(item);
-})
+});
+
+
+
 
 // function открытия попапов
 function openPopup(popup) {
@@ -79,14 +85,16 @@ function openEditPopup() {
   nameInput.value = profileContent.textContent;
   jobInput.value = jobContent.textContent;
   openPopup(popupEdit);
-  toggleButton(popupEditFormElement,formValidationConfig);
+  const editFormValidation = new FormValidator(formValidationConfig, '.form_edit');
+  editFormValidation.enableValidation();
 }
 
 function openAddPopup() {
   titleInput.value = '';
   linkInput.value = '';
   openPopup(popupAdd);
-  toggleButton(popupAddFormElement,formValidationConfig);
+  const addFormValidation = new FormValidator(formValidationConfig, '.form_add');
+  addFormValidation.enableValidation();
 }
 
 editButton.addEventListener('click', openEditPopup);
@@ -103,7 +111,6 @@ function closeByEscape(evt) {
   if(evt.key === 'Escape') {
     const openedPopup = document.querySelector('.popup_opened');
     closePopup(openedPopup);
-    console.log(evt)
   }
 }
 
@@ -193,3 +200,6 @@ function closeByOverlay(evt) {
 }
 
 document.addEventListener('mousedown', closeByOverlay);
+
+
+
