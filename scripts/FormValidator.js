@@ -57,17 +57,19 @@ const formValidationConfig = {
 
 
     enableValidation() {
-        // this._form.addEventListener('submit', (event) => {
-        //     this._disableSubmit(event);
-        // });
-
-        // this._form.addEventListener('input', () => {
-        //     this._toggleButton();
-        // });
-
         this._addInputListeners();
         this._toggleButton();
-        }
+        
+        this._form.addEventListener('submit', (event) => {
+            this._disableSubmit(event);
+        });
+
+        this._form.addEventListener('input', () => {
+            this._toggleButton();
+        });
+
+        
+    }
 
 }
 

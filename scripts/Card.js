@@ -36,6 +36,10 @@ class Card {
         this._card.remove();
     }
 
+    _openImageHandler() {
+        this._openImage(this._name, this._link);
+    }
+
     _setEventListeners() {
         this._elementLikeBtn.addEventListener('click', () => {
             this._likeCard();
@@ -45,7 +49,7 @@ class Card {
         });
 
         this._elementImage.addEventListener('click', () => {
-            this._openImage
+            this._openImageHandler();
         })
     }
 };
