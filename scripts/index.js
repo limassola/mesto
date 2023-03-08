@@ -92,16 +92,14 @@ function openEditPopup() {
   nameInput.value = profileContent.textContent;
   jobInput.value = jobContent.textContent;
   openPopup(popupEdit);
-  const editFormValidation = new FormValidator(formValidationConfig, '.form_edit');
-  editFormValidation.enableValidation();
+  const editFormValidation = new FormValidator(formValidationConfig, '.form_edit').enableValidation();
 }
 
 function openAddPopup() {
   titleInput.value = '';
   linkInput.value = '';
   openPopup(popupAdd);
-  const addFormValidation = new FormValidator(formValidationConfig, '.form_add');
-  addFormValidation.enableValidation();
+  const addFormValidation = new FormValidator(formValidationConfig, '.form_add').enableValidation();
 }
 
 editButton.addEventListener('click', openEditPopup);
@@ -204,7 +202,13 @@ function closeByOverlay(evt) {
   }
 }
 
-document.addEventListener('mousedown', closeByOverlay);
+imagePopup.addEventListener('mousedown', closeByOverlay);
+
+popupAdd.addEventListener('mousedown', closeByOverlay);
+
+popupEdit.addEventListener('mousedown', closeByOverlay);
+
+
 
 
 

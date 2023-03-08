@@ -51,6 +51,7 @@ function toggleButton(form, config) {
 }
 
 function addInputListeners(form, config) {
+    
     const inputList = Array.from(form.querySelectorAll(config.inputSelector));
 
     inputList.forEach(function (item){

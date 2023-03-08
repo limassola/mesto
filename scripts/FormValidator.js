@@ -40,7 +40,7 @@ const formValidationConfig = {
     }
 
     _toggleButton() {
-        this._buttonSubmit = document.querySelector(this._buttonSelector);
+        this._buttonSubmit = this._form.querySelector(this._buttonSelector);
         this._isFormValid = this._form.checkValidity();
         this._buttonSubmit.disabled = !this._isFormValid;
         this._buttonSubmit.classList.toggle(this._buttonDisabledClass, !this._isFormValid);
