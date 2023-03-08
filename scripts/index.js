@@ -187,7 +187,7 @@ function addFormHandler(evt, item){
   evt.preventDefault();
   const cardName = titleInput.value
   const cardLink = linkInput.value
-  renderCard({name:cardName, link:cardLink})
+  renderCard({name:cardName, link:cardLink});
   closePopup (popupAdd);
 };
 

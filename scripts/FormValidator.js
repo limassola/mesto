@@ -19,7 +19,7 @@ const formValidationConfig = {
         this._errorClass = config.errorClass;
     }
 
-    _handleFormInput(item) {
+    _removeErrorFormInput(item) {
         this._input = item;
         this._inputId = this._input.id;
         this._errorElement = this._form.querySelector(`#${this._inputId}-error`);
@@ -28,11 +28,20 @@ const formValidationConfig = {
             this._input.classList.remove(this._inputErrorClass);
             this._errorElement.classList.remove(this._errorClass)
             this._errorElement.textContent = '';
-        } else {
+        }
+    }
+
+    _addErrorFormInput(item) {
+        this._input = item;
+        this._inputId = this._input.id;
+        this._errorElement = this._form.querySelector(`#${this._inputId}-error`);
+    
+        if( !this._input.validity.valid)  {
             this._input.classList.add(this._inputErrorClass);
             this._errorElement.classList.add(this._errorClass)
             this._errorElement.textContent = this._input.validationMessage;
         }
+
     }
 
     _disableSubmit(event) {
@@ -50,7 +59,9 @@ const formValidationConfig = {
         this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
         this._inputList.forEach((item) => {
             item.addEventListener('input', () => {
-                this._handleFormInput(item);
+                this._removeErrorFormInput(item);
+                this._addErrorFormInput(item);
+                this._toggleButton();
             })
         });
     }
@@ -59,14 +70,15 @@ const formValidationConfig = {
     enableValidation() {
         this._addInputListeners();
         this._toggleButton();
+        this._disableSubmit()
         
-        this._form.addEventListener('submit', (event) => {
-            this._disableSubmit(event);
-        });
+        // this._form.addEventListener('submit', (event) => {
+        //     this._disableSubmit(event);
+        // });
 
-        this._form.addEventListener('input', () => {
-            this._toggleButton();
-        });
+        // this._form.addEventListener('input', () => {
+            
+        // });
 
         
     }
