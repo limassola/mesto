@@ -61,7 +61,9 @@ const template = document.querySelector('.cards__item-template');
 const popupEditFormElement = popupEdit.querySelector('.form');
 const popupAddFormElement = popupAdd.querySelector('.form');
 
- 
+ function createNewCards (item) {
+    cardsContainer.prepend(renderCard(item));
+ }
 
 
 function renderCard(data) {
@@ -71,12 +73,11 @@ function renderCard(data) {
     titleActive.textContent = cardName;
     openPopup(imagePopup);
   });
-  const createCard = newCard.generateCard();
-  cardsContainer.prepend(createCard)
+   return newCard.generateCard();
 };
 
 initialCards.forEach((item) => {
-  renderCard(item);
+  createNewCards (item)
 });
 
 
@@ -187,7 +188,7 @@ function addFormHandler(evt, item){
   evt.preventDefault();
   const cardName = titleInput.value
   const cardLink = linkInput.value
-  renderCard({name:cardName, link:cardLink});
+  createNewCards({name:cardName, link:cardLink});
   closePopup (popupAdd);
 };
 
