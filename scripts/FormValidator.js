@@ -37,7 +37,7 @@ class FormValidator {
     }
 
     _checkInputValid(input) {
-        if (this._hasInvalidInput(input)) {
+        if (!input.validity.valid) {
             this._addErrorFormInput(input);
         } else {
             this._removeErrorFormInput(input);
@@ -55,7 +55,6 @@ class FormValidator {
     }
 
     _setEventListeners() {  
-        this._form.addEventListener('submit', this._disableSubmit.bind(this));
         this._inputList.forEach((input) => {
             input.addEventListener('input', () => {
                 this._checkInputValid(input);

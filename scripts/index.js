@@ -118,10 +118,6 @@ editButton.addEventListener('click', openEditPopup);
 addButton.addEventListener('click', openAddPopup);
 
 
-
-
-
-
 // fuction закрытия всех попапов
 
 function closeByEscape(evt) {
@@ -153,47 +149,7 @@ function handleFormSubmit (evt) {
 
 popupEditFormElement.addEventListener('submit', handleFormSubmit); 
 
-// render cards
 
-
-// const createCard = (cardName, cardLink) => {
-
-//   const card = template.content.querySelector('.cards__item').cloneNode(true);
-//   const cardImage = card.querySelector('.cards__image');
-//   const cardTitle = card.querySelector('.cards__title');
-  
-//   cardTitle.textContent = cardName;
-//   cardImage.setAttribute("src", cardLink);
-//   cardImage.setAttribute("alt", cardName);
-
-//   const likeBtn = card.querySelector('.cards__button-like');
-//   likeBtn.addEventListener('click', function(evt){
-//     const currentButton = evt.target;
-//     currentButton.classList.toggle('cards__button-like_active')
-//   });
-
-//   const deleteBtn = card.querySelector('.cards__button-delete');
-//   deleteBtn.addEventListener('click', ()=>{
-//     card.remove();
-//   })
-
-//  function openImage() {
-//     
-//     imageActive.src = 
-//   };
-
-//   return card;
-// };
-
-// const renderCard = (cardName, cardLink) => {
-//   cardsContainer.prepend(createCard(cardName, cardLink))
-// };
-
-// initialCards.forEach((item)=>{
-//   cardName = item.name;
-//   cardLink = item.link
-//   renderCard(cardName, cardLink);
-// });
 
 function addFormHandler(evt, item){
   evt.preventDefault();
