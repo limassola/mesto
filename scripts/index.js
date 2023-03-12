@@ -1,7 +1,14 @@
 import Card from "./Card.js";
-import {formValidationConfig,FormValidator} from "./FormValidator.js";
+import FormValidator from "./FormValidator.js";
 
-
+const formValidationConfig = { 
+  formSelector: '.form', 
+  inputSelector: '.form__item', 
+  inputErrorClass: 'form__item_type_error', 
+  buttonSelector: '.form__button', 
+  buttonDisabledClass: 'form__button_disabled', 
+  errorClass: 'form__error_visible' 
+};
 
 
 const initialCards = [
@@ -81,6 +88,10 @@ initialCards.forEach((item) => {
 });
 
 
+const editFormValidation = new FormValidator(formValidationConfig, '.form_edit');
+editFormValidation.enableValidation();
+const addFormValidation = new FormValidator(formValidationConfig, '.form_add');
+addFormValidation.enableValidation();
 
 
 // function открытия попапов
@@ -93,14 +104,14 @@ function openEditPopup() {
   nameInput.value = profileContent.textContent;
   jobInput.value = jobContent.textContent;
   openPopup(popupEdit);
-  const editFormValidation = new FormValidator(formValidationConfig, '.form_edit').enableValidation();
+  addFormValidation.resetValidation();
 }
 
 function openAddPopup() {
   titleInput.value = '';
   linkInput.value = '';
   openPopup(popupAdd);
-  const addFormValidation = new FormValidator(formValidationConfig, '.form_add').enableValidation();
+  addFormValidation.resetValidation();
 }
 
 editButton.addEventListener('click', openEditPopup);
