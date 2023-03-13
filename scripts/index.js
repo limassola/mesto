@@ -104,7 +104,7 @@ function openEditPopup() {
   nameInput.value = profileContent.textContent;
   jobInput.value = jobContent.textContent;
   openPopup(popupEdit);
-  editFormValidation.resetValidation();
+  FormValidation.resetValidation();
 }
 
 function openAddPopup() {
