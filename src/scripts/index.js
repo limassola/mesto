@@ -1,6 +1,8 @@
 import Card from "./Card.js";
 import FormValidator from "./FormValidator.js";
 import Popup from "./Popup.js";
+import Section from "./Section.js";
+import PopupWithImage from "./PopupWithImage.js";
 import '../pages/index.css';
 
 const formValidationConfig = { 
@@ -70,31 +72,47 @@ const template = document.querySelector('.cards__item-template');
 const popupEditFormElement = popupEdit.querySelector('.form');
 const popupAddFormElement = popupAdd.querySelector('.form');
 
- function createNewCards (item) {
-    cardsContainer.prepend(renderCard(item));
- }
 
 
-function renderCard(data) {
-  const newCard = new Card(data, '.cards__item-template', (cardName, cardLink) => {
-    imageActive.src = cardLink;
-    imageActive.alt = cardName;
-    titleActive.textContent = cardName;
-    openPopup(imagePopup);
-  });
-   return newCard.generateCard();
-};
-
-initialCards.forEach((item) => {
-  createNewCards (item)
-});
-
-
+// Валидация 
 const editFormValidation = new FormValidator(formValidationConfig, '.form_edit');
 editFormValidation.enableValidation();
 const addFormValidation = new FormValidator(formValidationConfig, '.form_add');
 addFormValidation.enableValidation();
 
+//Попап с картинкой
+const PhotoPopup = new PopupWithImage('.popup__image');
+// Отрисовка карточек
+const CardsSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      CardsSection.addItem(createCard(item))
+    }
+  },
+  '.cards'
+  );
+
+  function createCard(item) {
+    const newCard = new Card({
+      card: item,
+      handleCardClick:(name, link) => {
+        PhotoPopup.open(name, link);
+      }
+    },
+    '.cards__item-template');
+    return newCard.generateCard();
+  }
+
+    function createNewCards (item) {
+      cardsContainer.prepend(createCard(item));
+   }
+
+  // function handleCardClick(name, link) {
+  //   PhotoPopup.open(name, link);
+  // }
+
+  CardsSection.renderItems();
 
 // function открытия попапов
 function openPopup(popup) {
@@ -158,6 +176,7 @@ function addFormHandler(evt, item){
   const cardName = titleInput.value
   const cardLink = linkInput.value
   createNewCards({name:cardName, link:cardLink});
+  // CardsSection.addItem()
   closePopup (popupAdd);
 };
 
@@ -177,8 +196,3 @@ imagePopup.addEventListener('mousedown', closeByOverlay);
 popupAdd.addEventListener('mousedown', closeByOverlay);
 
 popupEdit.addEventListener('mousedown', closeByOverlay);
-
-
-
-
-
