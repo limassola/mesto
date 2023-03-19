@@ -3,6 +3,7 @@ import FormValidator from "./FormValidator.js";
 import Popup from "./Popup.js";
 import Section from "./Section.js";
 import PopupWithImage from "./PopupWithImage.js";
+import UserInfo from "./UserInfo.js";
 import '../pages/index.css';
 
 const formValidationConfig = { 
@@ -113,6 +114,13 @@ const CardsSection = new Section(
   // }
 
   CardsSection.renderItems();
+
+
+// UserInfo
+const userInfo = new UserInfo({
+  nameSelector: '.profile__name',
+  aboutSelector: '.profile__job'
+});
 
 // function открытия попапов
 function openPopup(popup) {
