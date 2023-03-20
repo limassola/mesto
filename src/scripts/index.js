@@ -82,7 +82,7 @@ const addFormValidation = new FormValidator(formValidationConfig, '.form_add');
 addFormValidation.enableValidation();
 
 //Попап с картинкой
-const PhotoPopup = new PopupWithImage('.popup__image');
+const PhotoPopup = new PopupWithImage('.popup_type_image');
 // Отрисовка карточек
 const CardsSection = new Section(
   {
