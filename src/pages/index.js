@@ -14,6 +14,8 @@ const editFormValidation = new FormValidator(formValidationConfig, '.form_edit')
 editFormValidation.enableValidation();
 const addFormValidation = new FormValidator(formValidationConfig, '.form_add');
 addFormValidation.enableValidation();
+const avatarFormValidation = new FormValidator(formValidationConfig, '.form_type_avatar');
+avatarFormValidation.enableValidation();
 
 
 //Попап с картинкой
