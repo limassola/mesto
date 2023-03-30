@@ -14,6 +14,10 @@ class Section {
             this._renderer(item, this._container);
         });
     }
+
+    setItems(items){
+        this._items = items;
+    }
 };
 
 export default Section;

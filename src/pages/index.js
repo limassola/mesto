@@ -6,8 +6,22 @@ import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import '../pages/index.css';
+import Api from "../components/Api.js";
 
+// Api
+const api = new Api({
+  url:'https://mesto.nomoreparties.co/v1/cohort-62/cards',
+  headers: {
+    'content-type': 'application/json',
+    'authorization': 'b0a7590b-647f-433a-aa05-717d75f49ba7',
+  }
+})
 
+ api.getAllCards()
+ .then((data) => {
+    cardsSection.setItems(data);
+    cardsSection.renderItems()
+ })
 
 // Валидация 
 const editFormValidation = new FormValidator(formValidationConfig, '.form_edit');
@@ -59,7 +73,7 @@ editButton.addEventListener('click', () => {
 // Отрисовка карточек
 const cardsSection = new Section(
   {
-    items: initialCards,
+    items: [],
     renderer: (item) => {
       cardsSection.addItem(createCard(item))
     }
