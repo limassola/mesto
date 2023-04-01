@@ -7,6 +7,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
 import '../pages/index.css';
 import Api from "../components/Api.js";
+import PopupWithSubmit from "../components/PopupWithSubmit.js";
 
 // Api
 const api = new Api({
@@ -94,7 +95,13 @@ const cardsSection = new Section(
         photoPopup.open(name, link);
       }
     },
-    '.cards__item-template');
+    '.cards__item-template',
+    api,
+    {
+    openDeletePopup:(id, cardElement) => {
+      deletePopup.open(id, cardElement)
+    }
+    });
     return newCard.generateCard();
   }
 
@@ -111,9 +118,16 @@ const userInfo = new UserInfo({
   aboutSelector: '.profile__job'
 });
 
-// // function открытия попапов
-// function openPopup(popup) {
-//     popup.classList.add('popup_opened')
-//     document.addEventListener('keydown', closeByEscape);
-// }
+// Попап удаления карточки
+const deletePopup = new PopupWithSubmit('.popup_type_delete', {
+  handleFormSubmit: (id, cardElement) => {
+    api.deleteCard(id)
+    .then(() => {
+      cardElement.remove();
+      deletePopup.close()
+    })
+    .catch((err) => console.log(err))
+  }
+});
+deletePopup.setEventListeners();
 
