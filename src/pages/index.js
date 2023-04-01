@@ -10,18 +10,23 @@ import Api from "../components/Api.js";
 
 // Api
 const api = new Api({
-  url:'https://mesto.nomoreparties.co/v1/cohort-62/cards',
+  url:'https://mesto.nomoreparties.co/v1/cohort-62/',
   headers: {
     'content-type': 'application/json',
     'authorization': 'b0a7590b-647f-433a-aa05-717d75f49ba7',
   }
 })
 
- api.getAllCards()
+//Загрузка карточек с сервера
+ api.getInitialCards()
  .then((data) => {
     cardsSection.setItems(data);
     cardsSection.renderItems()
  })
+ .catch((err) => {
+  alert(err);
+ })
+
 
 // Валидация 
 const editFormValidation = new FormValidator(formValidationConfig, '.form_edit');
@@ -40,7 +45,7 @@ photoPopup.setEventListeners();
 //Попап добавления карточки
 const addCardPopup = new PopupWithForm('.popup_type_add', {
   submitCallback:(formData) => {
-    cardsSection.addItem(createCard(formData))
+    cardsSection.saveItem(formData)
     addCardPopup.close()
   }  
   });
@@ -78,7 +83,8 @@ const cardsSection = new Section(
       cardsSection.addItem(createCard(item))
     }
   },
-  '.cards'
+  '.cards',
+    api
   );
 
   function createCard(item) {
