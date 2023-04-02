@@ -29,12 +29,15 @@ const api = new Api({
  });
 
  //Загрузка инфы о пользователе
+ let userId
+ 
  api.getUserInfo()
  .then((userInfo) => {
-  console.log(userInfo)
   profileContent.textContent = userInfo.name;
   jobContent.textContent = userInfo.about;
   profileAvatar.src = userInfo.avatar;
+  userId = userInfo._id
+  console.log(userId)
  })
  .catch((err) => {
   alert(err)
@@ -52,10 +55,18 @@ avatarFormValidation.enableValidation();
 //Попап изменения аватара
 const avatarEditPopup = new PopupWithForm('.popup_type_avatar', {
   submitCallback: (formData) => {
-    console.log(formData.link)
-    userInfo.setAvatar(formData.link)
+    avatarEditPopup.renderLoading(true)
     api.setAvatar(formData.link)
-    avatarEditPopup.close()
+    .then((data) => {
+      userInfo.setAvatar(data.link)
+      avatarEditPopup.close()
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      avatarEditPopup.renderLoading(false)
+    })
   }
 })
 avatarEditPopup.setEventListeners()
@@ -74,8 +85,10 @@ photoPopup.setEventListeners();
 //Попап добавления карточки
 const addCardPopup = new PopupWithForm('.popup_type_add', {
   submitCallback:(formData) => {
+    addCardPopup.renderLoading(true)
     cardsSection.saveItem(formData)
     addCardPopup.close()
+    addCardPopup.renderLoading(false)
   }  
   });
   addCardPopup.setEventListeners();
@@ -89,9 +102,18 @@ addButton.addEventListener('click', () => {
 //Попап редактирования
 const editProfilePopup = new PopupWithForm('.popup_type_edit', {
   submitCallback: (formData) => {
-    userInfo.setUserInfo(formData);
+    editProfilePopup.renderLoading(true)
     api.editUserInfo(formData.name, formData.about)
-    editProfilePopup.close();
+    .then((formData) => {
+      userInfo.setUserInfo(formData);
+      editProfilePopup.close();
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+    .finally(() => {
+      editProfilePopup.renderLoading(false)
+    })
   }
 });
 editProfilePopup.setEventListeners();
@@ -122,15 +144,15 @@ const cardsSection = new Section(
       card: item,
       handleCardClick:(name, link) => {
         photoPopup.open(name, link);
+      },
+      openDeletePopup:(id, cardElement) => {
+        deletePopup.open(id, cardElement)
       }
     },
     '.cards__item-template',
     api,
-    {
-    openDeletePopup:(id, cardElement) => {
-      deletePopup.open(id, cardElement)
-    }
-    });
+    userId
+    );
     return newCard.generateCard();
   }
 
@@ -160,4 +182,15 @@ const deletePopup = new PopupWithSubmit('.popup_type_delete', {
   }
 });
 deletePopup.setEventListeners();
+
+
+// Анимация ожидания ответа от Сервера
+
+function renderLoading(isLoading) {
+  if(isLoading) {
+    
+  } else {
+    
+  }
+}
 
