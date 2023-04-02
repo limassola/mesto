@@ -1,4 +1,4 @@
-import {formValidationConfig, initialCards, editButton, addButton, nameInput, jobInput} from "../utils/constants.js"
+import {formValidationConfig, editButton, addButton, nameInput, jobInput, avatarEditButton, profileContent, jobContent, profileAvatar} from "../utils/constants.js"
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
 import Section from "../components/Section.js";
@@ -25,8 +25,19 @@ const api = new Api({
     cardsSection.renderItems()
  })
  .catch((err) => {
-  alert(err);
+  alert(err)
+ });
+
+ //Загрузка инфы о пользователе
+ api.getUserInfo()
+ .then((userInfo) => {
+  profileContent.textContent = userInfo.name;
+  jobContent.textContent = userInfo.about;
+  profileAvatar.src = userInfo.avatar;
  })
+ .catch((err) => {
+  alert(err)
+ });
 
 
 // Валидация 
@@ -36,6 +47,22 @@ const addFormValidation = new FormValidator(formValidationConfig, '.form_add');
 addFormValidation.enableValidation();
 const avatarFormValidation = new FormValidator(formValidationConfig, '.form_type_avatar');
 avatarFormValidation.enableValidation();
+
+//Попап изменения аватара
+const avatarEditPopup = new PopupWithForm('.popup_type_avatar', {
+  submitCallback: (formData) => {
+    console.log(formData.link)
+    userInfo.setAvatar(formData.link)
+    api.setAvatar(formData.link)
+    avatarEditPopup.close()
+  }
+})
+avatarEditPopup.setEventListeners()
+
+avatarEditButton.addEventListener('click', () => {
+  avatarFormValidation.resetValidation();
+  avatarEditPopup.open();
+})
 
 
 //Попап с картинкой
@@ -115,7 +142,8 @@ cardsSection.renderItems();
 // UserInfo
 const userInfo = new UserInfo({
   nameSelector: '.profile__name',
-  aboutSelector: '.profile__job'
+  aboutSelector: '.profile__job',
+  avatarSelector: '.profile__avatar'
 });
 
 // Попап удаления карточки

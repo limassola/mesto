@@ -47,6 +47,7 @@ export const imagePopup = document.querySelector('.popup_type_image');
   
 export const profileContent = document.querySelector('.profile__name');
 export const jobContent = document.querySelector('.profile__job');
+export const profileAvatar = document.querySelector('.profile__avatar')
   
   
   
@@ -64,3 +65,4 @@ export const template = document.querySelector('.cards__item-template');
   
 export const popupEditFormElement = popupEdit.querySelector('.form');
 export const popupAddFormElement = popupAdd.querySelector('.form');
+export const avatarEditButton = document.querySelector('.profile__avatar-container');

@@ -4,33 +4,29 @@ class Api {
         this._headers = config.headers;
     }
 
-    getInitialCards() {
-        return fetch(this._url+'cards', {
-            method: 'GET',
-            headers: this._headers,
-        }).then((res) => {
-            if(res.ok){
+    _handleResponse(res) {
+        if(res.ok){
             return res.json();
             }
 
             return Promise.reject(`Ошибка: ${res.status}`);
-        })
+    }
+
+    getInitialCards() {
+        return fetch(`${this._url}/cards`, {
+            method: 'GET',
+            headers: this._headers,
+        }).then(this._handleResponse)
 
     }
 
     addCard(data){
-        return fetch(this._url+'cards', {
+        return fetch(`${this._url}/cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify(data),
         })
-        .then(res => {
-            if(res.ok){
-            return res.json();
-            }
-    
-            return Promise.reject(`Ошибка: ${res.status}`);
-        })
+        .then(this._handleResponse)
     }
 
     deleteCard(id) {
@@ -45,6 +41,37 @@ class Api {
     
             return Promise.reject(`Ошибка: ${res.status}`);
         })
+    }
+
+    getUserInfo() {
+        return fetch(`${this._url}users/me`, {
+            method: 'GET',
+            headers: this._headers,
+        })
+        .then(this._handleResponse)
+    }
+
+    editUserInfo({name, about}) {
+        return fetch(`${this._url}users/me`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                name: name,
+                about: about,
+            }),
+        })
+        .then(this._handleResponse)
+    }
+
+    setAvatar(link) {
+        return fetch(`${this._url}users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: link,
+            }),
+        })
+        .then(this._handleResponse)
     }
 
 }
