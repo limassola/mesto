@@ -31,6 +31,7 @@ const api = new Api({
  //Загрузка инфы о пользователе
  api.getUserInfo()
  .then((userInfo) => {
+  console.log(userInfo)
   profileContent.textContent = userInfo.name;
   jobContent.textContent = userInfo.about;
   profileAvatar.src = userInfo.avatar;
@@ -89,6 +90,7 @@ addButton.addEventListener('click', () => {
 const editProfilePopup = new PopupWithForm('.popup_type_edit', {
   submitCallback: (formData) => {
     userInfo.setUserInfo(formData);
+    api.editUserInfo(formData.name, formData.about)
     editProfilePopup.close();
   }
 });

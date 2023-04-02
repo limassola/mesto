@@ -51,7 +51,7 @@ class Api {
         .then(this._handleResponse)
     }
 
-    editUserInfo({name, about}) {
+    editUserInfo(name, about) {
         return fetch(`${this._url}users/me`, {
             method: 'PATCH',
             headers: this._headers,
