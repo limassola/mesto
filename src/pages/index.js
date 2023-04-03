@@ -32,12 +32,10 @@ const api = new Api({
  let userId
  
  api.getUserInfo()
- .then((userInfo) => {
-  profileContent.textContent = userInfo.name;
-  jobContent.textContent = userInfo.about;
-  profileAvatar.src = userInfo.avatar;
-  userId = userInfo._id
-  console.log(userId)
+ .then((data) => {
+  userInfo.setUserInfo({name: data.name, about: data.about});
+  userInfo.setAvatar(data.avatar);
+  userId = data._id
  })
  .catch((err) => {
   alert(err)
@@ -58,7 +56,7 @@ const avatarEditPopup = new PopupWithForm('.popup_type_avatar', {
     avatarEditPopup.renderLoading(true)
     api.setAvatar(formData.link)
     .then((data) => {
-      userInfo.setAvatar(data.link)
+      userInfo.setAvatar(data.avatar)
       avatarEditPopup.close()
     })
     .catch((err) => {
