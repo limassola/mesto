@@ -19,28 +19,37 @@ const api = new Api({
 })
 
 //Загрузка карточек с сервера
- api.getInitialCards()
- .then((data) => {
-    cardsSection.setItems(data);
-    cardsSection.renderItems()
- })
- .catch((err) => {
-  alert(err)
- });
+//  api.getInitialCards()
+//  .then((cards) => {
+//     cardsSection.renderItems(cards)
+//  })
+//  .catch((err) => {
+//   alert(err)
+//  });
 
  //Загрузка инфы о пользователе
  let userId
  
- api.getUserInfo()
- .then((data) => {
-  userInfo.setUserInfo({name: data.name, about: data.about});
-  userInfo.setAvatar(data.avatar);
-  userId = data._id
- })
- .catch((err) => {
-  alert(err)
- });
+//  api.getUserInfo()
+//  .then((data) => {
+//   userInfo.setUserInfo({name: data.name, about: data.about});
+//   userInfo.setAvatar(data.avatar);
+//   userId = data._id
+//  })
+//  .catch((err) => {
+//   alert(err)
+//  });
 
+ Promise.all([
+  api.getInitialCards(),
+  api.getUserInfo()
+ ])
+ .then(([cards, userData]) => {
+  cardsSection.renderItems(cards)
+  userInfo.setUserInfo({name: userData.name, about: userData.about});
+  userInfo.setAvatar(userData.avatar);
+  userId = userData._id
+ })
 
 // Валидация 
 const editFormValidation = new FormValidator(formValidationConfig, '.form_edit');
@@ -84,9 +93,19 @@ photoPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_type_add', {
   submitCallback:(formData) => {
     addCardPopup.renderLoading(true)
-    cardsSection.saveItem(formData)
-    addCardPopup.close()
-    addCardPopup.renderLoading(false)
+    api.addCard(formData)
+    .then((data) => {
+      cardsSection.addItem(createCard(data))
+    })
+    .then(() => {
+      addCardPopup.close()
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      addCardPopup.renderLoading(false)
+    })
   }  
   });
   addCardPopup.setEventListeners();
@@ -128,13 +147,12 @@ editButton.addEventListener('click', () => {
 // Отрисовка карточек
 const cardsSection = new Section(
   {
-    items: [],
-    renderer: (item) => {
-      cardsSection.addItem(createCard(item))
+    renderer: (data) => {
+      // const card = createCard(data);
+      cardsSection.addItem(createCard(data))
     }
   },
   '.cards',
-    api
   );
 
   function createCard(item) {
@@ -158,7 +176,7 @@ const cardsSection = new Section(
       cardsContainer.prepend(createCard(item));
    }
 
-cardsSection.renderItems();
+
 
 
 // UserInfo

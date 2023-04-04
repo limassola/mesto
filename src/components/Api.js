@@ -13,7 +13,7 @@ class Api {
     }
 
     getInitialCards() {
-        return fetch(`${this._url}/cards`, {
+        return fetch(`${this._url}cards`, {
             method: 'GET',
             headers: this._headers,
         }).then(this._handleResponse)
@@ -21,7 +21,7 @@ class Api {
     }
 
     addCard(data){
-        return fetch(`${this._url}/cards`, {
+        return fetch(`${this._url}cards`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify(data),
