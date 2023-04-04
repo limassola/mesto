@@ -9,6 +9,7 @@ import '../pages/index.css';
 import Api from "../components/Api.js";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
 
+
 // Api
 const api = new Api({
   url:'https://mesto.nomoreparties.co/v1/cohort-62/',
@@ -18,37 +19,19 @@ const api = new Api({
   }
 })
 
-//Загрузка карточек с сервера
-//  api.getInitialCards()
-//  .then((cards) => {
-//     cardsSection.renderItems(cards)
-//  })
-//  .catch((err) => {
-//   alert(err)
-//  });
-
- //Загрузка инфы о пользователе
- let userId
+let userId
  
-//  api.getUserInfo()
-//  .then((data) => {
-//   userInfo.setUserInfo({name: data.name, about: data.about});
-//   userInfo.setAvatar(data.avatar);
-//   userId = data._id
-//  })
-//  .catch((err) => {
-//   alert(err)
-//  });
-
+//Запросы для получения инфы о карточка и пользователе
  Promise.all([
   api.getInitialCards(),
   api.getUserInfo()
  ])
  .then(([cards, userData]) => {
+  userId = userData._id
   cardsSection.renderItems(cards)
   userInfo.setUserInfo({name: userData.name, about: userData.about});
   userInfo.setAvatar(userData.avatar);
-  userId = userData._id
+
  })
 
 // Валидация 
@@ -165,8 +148,8 @@ const cardsSection = new Section(
       handleCardClick:(name, link) => {
         photoPopup.open(name, link);
       },
-      openDeletePopup:(id, cardElement) => {
-        deletePopup.open(id, cardElement)
+      openDeletePopup:() => {
+        deletePopup.open(newCard)
       }
     },
     '.cards__item-template',
@@ -175,6 +158,7 @@ const cardsSection = new Section(
     );
     return newCard.generateCard();
   }
+
 
     function createNewCards (item) {
       cardsContainer.prepend(createCard(item));
@@ -192,26 +176,16 @@ const userInfo = new UserInfo({
 
 // Попап удаления карточки
 const deletePopup = new PopupWithSubmit('.popup_type_delete', {
-  handleFormSubmit: (id, cardElement) => {
-    api.deleteCard(id)
+  handleFormSubmit:(card) => {
+    api.deleteCard(card._id)
     .then(() => {
-      console.log(cardElement)
-      cardElement.remove();
-      // deletePopup.close()
+    card.deleteCard()
+    })
+    .then(() => {
+      deletePopup.close()
     })
     .catch((err) => console.log(err))
   }
 });
 deletePopup.setEventListeners();
-
-
-// Анимация ожидания ответа от Сервера
-
-function renderLoading(isLoading) {
-  if(isLoading) {
-    
-  } else {
-    
-  }
-}
 

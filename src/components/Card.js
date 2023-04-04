@@ -65,12 +65,8 @@ class Card {
     }
 
     deleteCard() {
-        this._api.deleteCard(this._id)
-        .then(() => {
-            this._card.remove();
-            this._card = null;
-        })
-        .catch(err => console.log(err))
+        this._card.remove();
+        this._card = null;
     }
 
     _setEventListeners() {
