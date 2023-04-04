@@ -95,7 +95,7 @@ photoPopup.setEventListeners();
 const addCardPopup = new PopupWithForm('.popup_type_add', {
   submitCallback:(formData) => {
     addCardPopup.renderLoading(true)
-    api.addCard(formData)
+    api.addCard(formData.name, formData.link)
     .then((data) => {
       cardsSection.addItem(createCard(data))
     })
@@ -195,8 +195,9 @@ const deletePopup = new PopupWithSubmit('.popup_type_delete', {
   handleFormSubmit: (id, cardElement) => {
     api.deleteCard(id)
     .then(() => {
+      console.log(cardElement)
       cardElement.remove();
-      deletePopup.close()
+      // deletePopup.close()
     })
     .catch((err) => console.log(err))
   }
