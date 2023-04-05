@@ -150,10 +150,28 @@ const cardsSection = new Section(
       },
       openDeletePopup:() => {
         deletePopup.open(newCard)
+      },
+      handleLikeClick: (cardId, isLiked) => {
+        if(isLiked) {
+          api.removeLike(cardId)
+          .then((data) => {
+            newCard.removeLike(data.likes)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+        } else {
+          api.addLike(cardId)
+          .then((data) => {
+            newCard.addLike(data.likes)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+        }
       }
     },
     '.cards__item-template',
-    api,
     userId
     );
     return newCard.generateCard();
@@ -163,9 +181,6 @@ const cardsSection = new Section(
     function createNewCards (item) {
       cardsContainer.prepend(createCard(item));
    }
-
-
-
 
 // UserInfo
 const userInfo = new UserInfo({

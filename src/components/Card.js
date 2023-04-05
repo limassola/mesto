@@ -1,5 +1,5 @@
 class Card {
-    constructor({card, handleCardClick, openDeletePopup}, templateSelector, api, userId){
+    constructor({card, handleCardClick, openDeletePopup, handleLikeClick}, templateSelector, userId){
         this._name = card.name;
         this._link = card.link;
         this._id = card._id;
@@ -7,9 +7,8 @@ class Card {
         this._likes = card.likes;
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
-        // this._handleCardLike = handleCardLike;
+        this.handleLikeClick = handleLikeClick;
         this._openDeletePopup = openDeletePopup;
-        this._api = api;
         this._userId = userId;
     }
 
@@ -38,30 +37,26 @@ class Card {
             this._elementDeleteBtn.remove();
         }
 
+        const isLiked = this._likes.some((like) => like._id === this._userId);
+        if(isLiked) {
+            this._elementLikeBtn.classList.add('cards__button-like_active')
+        }
+        
         return this._card;
         
     }
 
-    _likeCard(){
-        const isLiked = this._likes.some((like) => like._id === this._userId);
 
-        if(isLiked) {
-            this._api.removeLike(this._id)
-            .then((data) => {
-                this._likes = data.likes;
-                this._elementLikeCount.textContent = this._likes.length;
-                this._elementLikeBtn.classList.remove('cards__button-like_active');
-            })
-            .catch((err) => console.log(err));
-        } else {
-            this._api.addLike(this._id)
-            .then((data) => {
-                this._likes = data.likes;
-                this._elementLikeCount.textContent = this._likes.length;
-                this._elementLikeBtn.classList.add('cards__button-like_active');
-            })
-            .catch((err) => console.log(err));
-        }
+    addLike(likes) {
+        this._likes = likes
+        this._elementLikeCount.textContent = this._likes.length;
+        this._elementLikeBtn.classList.add('cards__button-like_active')
+    }
+
+    removeLike(likes) {
+        this._likes = likes
+        this._elementLikeCount.textContent = this._likes.length;
+        this._elementLikeBtn.classList.remove('cards__button-like_active')
     }
 
     deleteCard() {
@@ -71,8 +66,11 @@ class Card {
 
     _setEventListeners() {
         this._elementLikeBtn.addEventListener('click', () => {
-            this._likeCard();
-        });
+            const isLiked = this._likes.some((like) => like._id === this._userId);
+        
+            this.handleLikeClick(this._id, isLiked)
+        })
+        
         
         if (this._ownerId === this._userId) {
             this._elementDeleteBtn.addEventListener('click', () => {
